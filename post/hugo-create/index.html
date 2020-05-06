@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Hugo 创建博客 - ZzmHub Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZzmHub" /><meta name="description" content="基于Hugo创建博客 第一步：安装Hugo 下载地址：hugo_extended 下载适合你的操作系统的版本。 把 hugo（或者是 Windows 的 hugo.ex" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.2 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/hugo-create/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.4eb71590ad024de2ebb1b5eef94cbb645b7e63e6b9c4c837355530a75e112ce1.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Hugo 创建博客" />
+<meta property="og:description" content="基于Hugo创建博客 第一步：安装Hugo 下载地址：hugo_extended 下载适合你的操作系统的版本。 把 hugo（或者是 Windows 的 hugo.ex" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/hugo-create/" />
+<meta property="article:published_time" content="2020-05-06T09:20:21+08:00" />
+<meta property="article:modified_time" content="2020-05-06T09:20:21+08:00" />
+<meta itemprop="name" content="Hugo 创建博客">
+<meta itemprop="description" content="基于Hugo创建博客 第一步：安装Hugo 下载地址：hugo_extended 下载适合你的操作系统的版本。 把 hugo（或者是 Windows 的 hugo.ex">
+<meta itemprop="datePublished" content="2020-05-06T09:20:21&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-06T09:20:21&#43;08:00" />
+<meta itemprop="wordCount" content="410">
+
+
+
+<meta itemprop="keywords" content="Hugo," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hugo 创建博客"/>
+<meta name="twitter:description" content="基于Hugo创建博客 第一步：安装Hugo 下载地址：hugo_extended 下载适合你的操作系统的版本。 把 hugo（或者是 Windows 的 hugo.ex"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZzmHub</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZzmHub</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Hugo 创建博客</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-05-06 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"> 工具使用 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基于hugo创建博客">基于Hugo创建博客</a>
+      <ul>
+        <li><a href="#__第一步安装hugo__"><strong>第一步：安装Hugo</strong></a></li>
+        <li><a href="#__第二步创建站点及文章__"><strong>第二步：创建站点及文章</strong></a></li>
+        <li><a href="#__第三步安装皮肤__"><strong>第三步：安装皮肤</strong></a></li>
+        <li><a href="#__第四步运行hugo__"><strong>第四步：运行Hugo</strong></a></li>
+        <li><a href="#转载声明">转载声明</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="基于hugo创建博客">基于Hugo创建博客</h2>
+<h3 id="__第一步安装hugo__"><strong>第一步：安装Hugo</strong></h3>
+<p>下载地址：<a href="https://github.com/gohugoio/hugo/releases">hugo_extended</a></p>
+<ol>
+<li>下载适合你的操作系统的版本。</li>
+<li>把 <code>hugo</code>（或者是 Windows 的 <code>hugo.exe</code>）放到你的环境变量 <code>PATH</code> 所在的目录。</li>
+</ol>
+<h3 id="__第二步创建站点及文章__"><strong>第二步：创建站点及文章</strong></h3>
+<p>Hugo创建站点</p>
+<p><code>$ hugo new site 你的项目名</code></p>
+<p>创建一个文章内容页面</p>
+<p><code>$ hugo new index.md</code></p>
+<h3 id="__第三步安装皮肤__"><strong>第三步：安装皮肤</strong></h3>
+<p>选择喜欢的皮肤下载，在 <code>\themes\</code> 目录下</p>
+<p><code>$ git clone https://github.com/olOwOlo/hugo-theme-even themes/even</code></p>
+<p>下载地址：</p>
+<ul>
+<li><a href="https://www.gohugo.org/theme/">Hugo皮肤库</a></li>
+<li><a href="https://github.com/olOwOlo/hugo-theme-even">本博客皮肤-even</a></li>
+</ul>
+<p><strong>注意：</strong> even皮肤要客制化主题使其能够生效，需要下载 <strong>hugo_extended</strong> Hugo定制版。</p>
+<p>例如：我想要将even原本默认的主题颜色 <code>Default</code> 修改为 <code>Cobalt Blue</code> ，只需修改</p>
+<p><code>\themes\even\assets\sass</code> 路径下的 <code>_variables.scss</code> 文件，然后再在网页主目录下使用hugo命令即可构建成功。</p>
+<h3 id="__第四步运行hugo__"><strong>第四步：运行Hugo</strong></h3>
+<p><code>Hugo</code> 包含了内置的高性能 <code>web server</code> 。通过简单的运行 <code>hugo server</code> ， <code>Hugo</code> 将会找一个有效的端口运行服务器用于你的文章。</p>
+<h3 id="转载声明">转载声明</h3>
+<blockquote>
+<p>作者：Hugo中文文档<br>
+链接：https://www.gohugo.org/<br>
+来源：Hugo中文文档<br>
+著作权归作者所有，任何形式的转载都请联系作者。</p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ZzmHub</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-05-06
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/hugo/">Hugo</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/hugo-command/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Hugo 命令行</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:gdmec.zhi@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhimianhub" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZzmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

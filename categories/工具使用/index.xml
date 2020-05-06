@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ZzmHub Blog</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content on ZzmHub Blog</description>
+    <title>工具使用 on ZzmHub Blog</title>
+    <link>http://localhost:1313/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</link>
+    <description>Recent content in 工具使用 on ZzmHub Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 06 May 2020 10:17:08 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 06 May 2020 11:15:55 +0800</lastBuildDate>
     
-	<atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://localhost:1313/categories/%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -27,15 +27,6 @@
       
       <guid>http://localhost:1313/post/hugo-command/</guid>
       <description>Hugo常见命令 创建项目及文章： hugo new ... hugo new site 项目名 hugo new ....md hugo hugo 本身就是一个命令，他的作用就是生成静态网站，默认在生成的静态文件保存在 public 目录中。</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>http://localhost:1313/about/</link>
-      <pubDate>Wed, 06 May 2020 10:17:08 +0800</pubDate>
-      
-      <guid>http://localhost:1313/about/</guid>
-      <description>版权声明 规定本博客有三项保留权利 知识共享署名（即转载时需带上原作者的署名） 非商业性使用 相同方式共享 自我介绍 ZzmHub 一个在广州工作的前端开发工程师，</description>
     </item>
     
     <item>
