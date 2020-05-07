@@ -21,15 +21,6 @@
     </item>
     
     <item>
-      <title>Hugo 命令行</title>
-      <link>http://localhost:1313/post/hugo-command/</link>
-      <pubDate>Wed, 06 May 2020 11:09:38 +0800</pubDate>
-      
-      <guid>http://localhost:1313/post/hugo-command/</guid>
-      <description>Hugo常见命令 创建项目及文章： hugo new ... hugo new site 项目名 hugo new ....md hugo hugo 本身就是一个命令，他的作用就是生成静态网站，默认在生成的静态文件保存在 public 目录中。</description>
-    </item>
-    
-    <item>
       <title>Hugo 搭建博客</title>
       <link>http://localhost:1313/post/hugo-create/</link>
       <pubDate>Wed, 06 May 2020 09:20:21 +0800</pubDate>
