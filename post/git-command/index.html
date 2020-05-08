@@ -49,7 +49,7 @@
 <meta itemprop="description" content="Git—分布式版本控制系统 1. 全局修改配置文件 1 2 git config --global user.name &#34;Your Name&#34; git config --global user.email &#34;email@example.com&#34; 2. 暂存修改 操作 base 创建stash添加备注 git stash save &ldquo;save message&rdquo; 查看 git stash list 显示做了哪些">
 <meta itemprop="datePublished" content="2020-05-07T16:34:36&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-07T16:34:36&#43;08:00" />
-<meta itemprop="wordCount" content="1663">
+<meta itemprop="wordCount" content="1715">
 
 
 
@@ -147,7 +147,8 @@
         <li><a href="#5-代码提交-">5. 代码提交</a></li>
         <li><a href="#6-远程仓库操作-">6. 远程仓库操作</a></li>
         <li><a href="#7-标签操作-">7. 标签操作</a></li>
-        <li><a href="#8-提交格式-">8. 提交格式</a></li>
+        <li><a href="#8-查看记录-">8. 查看记录</a></li>
+        <li><a href="#9-提交格式-">9. 提交格式</a></li>
         <li><a href="#8-git常用命令速查表-">8. Git常用命令速查表</a></li>
         <li><a href="#转载声明">转载声明</a></li>
       </ul>
@@ -425,7 +426,38 @@ git tag -d v0.9
 git push origin :refs/tags/v0.9
 </code></pre></td></tr></table>
 </div>
-</div><h3 id="8-提交格式-">8. 提交格式</h3>
+</div><h3 id="8-查看记录-">8. 查看记录</h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>base</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提交历史</td>
+<td>git log / git log &ndash;pretty=online</td>
+</tr>
+<tr>
+<td>当前仓库状态</td>
+<td>git status</td>
+</tr>
+<tr>
+<td>查看历史命令</td>
+<td>git reflog</td>
+</tr>
+<tr>
+<td>分支合并图</td>
+<td>git log &ndash;graph</td>
+</tr>
+<tr>
+<td>查看远程库信息</td>
+<td>git remote -v</td>
+</tr>
+</tbody>
+</table>
+<h3 id="9-提交格式-">9. 提交格式</h3>
 <p>feat: 新特性，添加功能</p>
 <p>fix: 修改bug</p>
 <p>refactor: 代码重构</p>
@@ -435,9 +467,9 @@ git push origin :refs/tags/v0.9
 <p>chore: 其他修改, 比如构建流程, 依赖管理</p>
 <h3 id="8-git常用命令速查表-">8. Git常用命令速查表</h3>
 <p>表1</p>
-<p><img src="https://raw.githubusercontent.com/zhimianhub/blogImage/master/20200507174659.webp" alt="1. Git常用命令速查表："></p>
+<p><img src="https://i.loli.net/2020/05/08/MWG6KybgcjtDhO2.png" alt="1. Git常用命令速查表："></p>
 <p>表2</p>
-<p><img src="https://raw.githubusercontent.com/zhimianhub/blogImage/master/15181332_I4p6.jpg" alt="2. Git常用命令速查表："></p>
+<p><img src="https://i.loli.net/2020/05/08/etvYxVF8dJnomQb.jpg" alt="2. Git常用命令速查表："></p>
 <h3 id="转载声明">转载声明</h3>
 <blockquote>
 <p>作者：SHERlocked93<br>
