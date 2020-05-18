@@ -13,19 +13,19 @@
     
     <item>
       <title>Git常用命令总结</title>
-      <link>http://localhost:1313/post/git-command/</link>
+      <link>http://localhost:1313/post/git/git-command/</link>
       <pubDate>Thu, 07 May 2020 16:34:36 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/git-command/</guid>
+      <guid>http://localhost:1313/post/git/git-command/</guid>
       <description>Git—分布式版本控制系统 1. 全局修改配置文件 1 2 git config --global user.name &amp;#34;Your Name&amp;#34; git config --global user.email &amp;#34;email@example.com&amp;#34; 2. 暂存修改 操作 base 创建stash添加备注 git stash save &amp;ldquo;save message&amp;rdquo; 查看 git stash list 显示做了哪些</description>
     </item>
     
     <item>
       <title>Hugo 命令行</title>
-      <link>http://localhost:1313/post/hugo-command/</link>
+      <link>http://localhost:1313/post/hugo%E5%8D%9A%E5%AE%A2/hugo-command/</link>
       <pubDate>Wed, 06 May 2020 11:09:38 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/hugo-command/</guid>
+      <guid>http://localhost:1313/post/hugo%E5%8D%9A%E5%AE%A2/hugo-command/</guid>
       <description>Hugo常见命令 创建项目及文章： hugo new ... hugo new site 项目名 hugo new ....md hugo hugo 本身就是一个命令，他的作用就是生成静态网站，默认在生成的静态文件保存在 public 目录中。</description>
     </item>
     

@@ -13,19 +13,19 @@
     
     <item>
       <title>Hugo Even主题</title>
-      <link>http://localhost:1313/post/hugo-theme-even/</link>
+      <link>http://localhost:1313/post/hugo%E5%8D%9A%E5%AE%A2/hugo-theme-even/</link>
       <pubDate>Wed, 06 May 2020 11:15:55 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/hugo-theme-even/</guid>
+      <guid>http://localhost:1313/post/hugo%E5%8D%9A%E5%AE%A2/hugo-theme-even/</guid>
       <description>hugo-theme-even主题皮肤安装 在 \themes\ 目录下安装 $ git clone https://github.com/olOwOlo/hugo-theme-even even 重要: 在主题的 exampleSite 目录下有一个 config.toml 文件，将这个 config.toml 文件复制到你的站点目录下，根据</description>
     </item>
     
     <item>
       <title>Hugo 搭建博客</title>
-      <link>http://localhost:1313/post/hugo-create/</link>
+      <link>http://localhost:1313/post/hugo%E5%8D%9A%E5%AE%A2/hugo-create/</link>
       <pubDate>Wed, 06 May 2020 09:20:21 +0800</pubDate>
       
-      <guid>http://localhost:1313/post/hugo-create/</guid>
+      <guid>http://localhost:1313/post/hugo%E5%8D%9A%E5%AE%A2/hugo-create/</guid>
       <description>基于Hugo搭建博客 第一步：安装Hugo 下载地址：hugo_extended 下载适合你的操作系统的版本。 把 hugo（或者是 Windows 的 hugo.ex</description>
     </item>
     

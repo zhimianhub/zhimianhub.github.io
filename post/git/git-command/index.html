@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Git常用命令总结 - ZzmHub Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZzmHub" /><meta name="description" content="Git—分布式版本控制系统 1. 全局修改配置文件 1 2 git config --global user.name &amp;#34;Your Name&amp;#34; git config --global user.email &amp;#34;email@example.com&amp;#34; 2. 暂存修改 操作 base 创建stash添加备注 git stash save &amp;ldquo;save message&amp;rdquo; 查看 git stash list 显示做了哪些" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.2 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/git/git-command/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.4eb71590ad024de2ebb1b5eef94cbb645b7e63e6b9c4c837355530a75e112ce1.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Git常用命令总结" />
+<meta property="og:description" content="Git—分布式版本控制系统 1. 全局修改配置文件 1 2 git config --global user.name &#34;Your Name&#34; git config --global user.email &#34;email@example.com&#34; 2. 暂存修改 操作 base 创建stash添加备注 git stash save &ldquo;save message&rdquo; 查看 git stash list 显示做了哪些" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/git/git-command/" />
+<meta property="article:published_time" content="2020-05-07T16:34:36+08:00" />
+<meta property="article:modified_time" content="2020-05-07T16:34:36+08:00" />
+<meta itemprop="name" content="Git常用命令总结">
+<meta itemprop="description" content="Git—分布式版本控制系统 1. 全局修改配置文件 1 2 git config --global user.name &#34;Your Name&#34; git config --global user.email &#34;email@example.com&#34; 2. 暂存修改 操作 base 创建stash添加备注 git stash save &ldquo;save message&rdquo; 查看 git stash list 显示做了哪些">
+<meta itemprop="datePublished" content="2020-05-07T16:34:36&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-07T16:34:36&#43;08:00" />
+<meta itemprop="wordCount" content="1715">
+
+
+
+<meta itemprop="keywords" content="Git," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Git常用命令总结"/>
+<meta name="twitter:description" content="Git—分布式版本控制系统 1. 全局修改配置文件 1 2 git config --global user.name &#34;Your Name&#34; git config --global user.email &#34;email@example.com&#34; 2. 暂存修改 操作 base 创建stash添加备注 git stash save &ldquo;save message&rdquo; 查看 git stash list 显示做了哪些"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZzmHub</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZzmHub</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Git常用命令总结</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-05-07 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/"> 常用命令 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#__git分布式版本控制系统__"><strong>Git—分布式版本控制系统</strong></a>
+      <ul>
+        <li><a href="#1-全局修改配置文件-">1. 全局修改配置文件</a></li>
+        <li><a href="#2-暂存修改-">2. 暂存修改</a></li>
+        <li><a href="#3-撤销修改-">3. 撤销修改</a></li>
+        <li><a href="#4-分支操作-">4. 分支操作</a></li>
+        <li><a href="#5-代码提交-">5. 代码提交</a></li>
+        <li><a href="#6-远程仓库操作-">6. 远程仓库操作</a></li>
+        <li><a href="#7-标签操作-">7. 标签操作</a></li>
+        <li><a href="#8-查看记录-">8. 查看记录</a></li>
+        <li><a href="#9-提交格式-">9. 提交格式</a></li>
+        <li><a href="#8-git常用命令速查表-">8. Git常用命令速查表</a></li>
+        <li><a href="#转载声明">转载声明</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="__git分布式版本控制系统__"><strong>Git—分布式版本控制系统</strong></h2>
+<h3 id="1-全局修改配置文件-">1. 全局修改配置文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git config --global user.name &#34;Your Name&#34;
+git config --global user.email &#34;email@example.com&#34;
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2-暂存修改-">2. 暂存修改</h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>base</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>创建stash添加备注</td>
+<td>git stash save &ldquo;save message&rdquo;</td>
+</tr>
+<tr>
+<td>查看</td>
+<td>git stash list</td>
+</tr>
+<tr>
+<td>显示做了哪些改动</td>
+<td>git stash show stash@{ <code>&lt;num&gt;</code> }</td>
+</tr>
+<tr>
+<td>应用(不删除暂存)</td>
+<td>git stash apply stash@{ <code>&lt;num&gt;</code> }</td>
+</tr>
+<tr>
+<td>应用(并删除暂存(如无conflict))</td>
+<td>git stash pop stash@{ <code>&lt;num&gt;</code> }</td>
+</tr>
+<tr>
+<td>删除</td>
+<td>git stash drop stash@{ <code>&lt;num&gt;</code> }</td>
+</tr>
+</tbody>
+</table>
+<p><strong>注意：</strong> 不加stash@{ <code>&lt;num&gt;</code> }，默认第一个存储</p>
+<h3 id="3-撤销修改-">3. 撤销修改</h3>
+<p><strong>还未提交到暂存区</strong></p>
+<p>当修改还没有被 <code>add</code> 的时候，可以使用</p>
+<p><code>git checkout -- filename.txt</code></p>
+<p>来丢弃工作区某文件的修改，当然也可以把后面的文件改成 * 来撤销所有文件的修改。这是用仓库的文件覆盖工作区的文件。</p>
+<p>注意这里用的是 &ndash;，如果没有这个 &ndash;的话就变成切换分支了。</p>
+<p><strong>还未提交到仓库</strong></p>
+<p>如果你的修改已经被 <code>add</code> 到了暂存区，但是还没有被 <code>commit</code> ，那么可以使用</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git reset HEAD filename.txt
+git checkout -- filename.txt
+</code></pre></td></tr></table>
+</div>
+</div><p>首先用 <code>reset</code> 来把修改撤回到工作区，再使用上面的 <code>checkout</code> 命令撤回工作区的修改。这里的 <code>reset</code> 相当于 <code>add</code> 的反操作</p>
+<p><strong>已经提交到仓库</strong></p>
+<p>则可以版本回退</p>
+<p><code>git reset --hard 15zdx2s</code></p>
+<p>这里的 <code>--hard</code> 表示强制回退，丢弃本地的修改。这个回退比较野蛮，该版本号之后的提交都将不可见。</p>
+<p><strong>撤销之前某一个提交</strong></p>
+<p><code>git revert</code> 撤销一个提交的同时会创建一个新的提交，这是一个安全的方法，因为它不会重写提交历史。但实现上和 <code>reset</code> 是完全不同的。它撤销这个提交引入的更改，然后在最后加上一个撤销了更改的新提交，而不是从项目历史中移除这个提交。</p>
+<p><code>git revert 46af7z6</code></p>
+<p>相较于 <code>reset</code> ， <code>revert</code> 不会改变项目历史，对那些已经发布到共享仓库的提交来说这是一个安全的操作。其次 <code>git revert</code> 可以将提交历史中的任何一个提交撤销、而 <code>reset</code> 会把历史上某个提交及之后所有的提交都移除掉，这太野蛮了。</p>
+<p>相比 <code>reset</code>，它不会改变现在的提交历史。因此， <code>revert</code> 可以用在公共分支上， <code>reset</code> 应该用在私有分支上。</p>
+<p><strong>合并commit</strong></p>
+<p>如果已经 <code>commit</code> 了怎么办，如果要撤回目前的 <code>commit</code>，可以把它合并到上一个 <code>commit</code> 中</p>
+<p><code>git rebase -i HEAD~~</code></p>
+<p>在出现的两个提交信息的 <code>pick</code> 改为 <code>fixup</code></p>
+<h3 id="4-分支操作-">4. 分支操作</h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>base</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查看分支</td>
+<td>git branch</td>
+</tr>
+<tr>
+<td>查看本地和远程分支</td>
+<td>git branch -a</td>
+</tr>
+<tr>
+<td>在target分支上创建分支，没有则从当前分支</td>
+<td>git branch <code>&lt;branch-name&gt; &lt;target-branch&gt;</code></td>
+</tr>
+<tr>
+<td>切换分支</td>
+<td>git switch <code>&lt;branch-name&gt;</code></td>
+</tr>
+<tr>
+<td>创建并切换分支</td>
+<td>git switch -c <code>&lt;branch-name&gt;</code></td>
+</tr>
+<tr>
+<td>合并某分支到当前分支</td>
+<td>git merge <code>&lt;branch-name&gt;</code></td>
+</tr>
+<tr>
+<td>删除分支，只能删参与了合并的</td>
+<td>git branch -d <code>&lt;branch-name&gt;</code></td>
+</tr>
+<tr>
+<td>强行删除</td>
+<td>git branch -D <code>&lt;branch-name&gt;</code></td>
+</tr>
+<tr>
+<td>删除远程分支</td>
+<td>git push origin: <code>&lt;remote-branch-name&gt;</code></td>
+</tr>
+<tr>
+<td>上传前先pull下远程分支</td>
+<td>1.git fetch origin <code>&lt;remote-branch-name&gt;:&lt;tmp&gt;</code>,</td>
+</tr>
+<tr>
+<td></td>
+<td>2.git diff <code>&lt;tmp&gt;</code> 或者vscode中 git difftool <code>&lt;tmp&gt;</code></td>
+</tr>
+<tr>
+<td></td>
+<td>3.git merge <code>&lt;tmp&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-代码提交-">5. 代码提交</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">git add *
+git commit -m &#34;branch merge&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>这里提一下， <code>merge</code> 的时候有几个主要模式， <code>--no-ff、 fast-forward</code>，其中 fast-forward是默认的</p>
+<p>fast-forward：在master开始的新分支前进了几个版本之后如果需要merge回来，此时master并没有前进，那么这个模式就是把HEAD与master指针指向新分支上，完成合并。这种情况如果删除分支，则会丢失分支信息，因为在这个过程中并没有创建commit。</p>
+<p>&ndash;no-ff：关闭默认的 fast-forward模式，也就是在merge的时候生成一个新的commit，这样在分支历史上就可以看出分支信息。</p>
+<h3 id="6-远程仓库操作-">6. 远程仓库操作</h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>base</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>克隆</td>
+<td>git clone <code>&lt;url&gt;</code></td>
+</tr>
+<tr>
+<td>添加关联远程仓库</td>
+<td>git remote add <code>&lt;origin&gt; &lt;url&gt;</code></td>
+</tr>
+<tr>
+<td>删除远程仓库</td>
+<td>git remote rm <code>&lt;origin&gt;</code></td>
+</tr>
+<tr>
+<td>拉取</td>
+<td>git pull <code>&lt;remote-branch-name&gt; &lt;local-branch-name&gt;</code></td>
+</tr>
+<tr>
+<td>推送本地所有分支到远程</td>
+<td>git push &ndash;all origin</td>
+</tr>
+<tr>
+<td>推送到远程同名分支</td>
+<td>git push origin <code>&lt;local-branch-name&gt;</code></td>
+</tr>
+<tr>
+<td>推送本地分支到远程master</td>
+<td>git push origin <code>&lt;local-branch-name&gt;</code>: master</td>
+</tr>
+<tr>
+<td>把当前本地分支推送并创建到远程</td>
+<td>git push origin</td>
+</tr>
+<tr>
+<td>检出远程分支</td>
+<td>git checkout -b <code>&lt;new-local-branch-name&gt;</code> origin/ <code>&lt;remote-branch-name&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="7-标签操作-">7. 标签操作</h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>base</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查看所有标签</td>
+<td>git tag</td>
+</tr>
+<tr>
+<td>新建标签</td>
+<td>git tag <code>&lt;tagname&gt;</code></td>
+</tr>
+<tr>
+<td>新建并制定说明</td>
+<td>git tag <code>&lt;tagname&gt;</code> -m <code>&lt;message&gt; &lt;bash&gt;</code></td>
+</tr>
+<tr>
+<td>查看标签说明</td>
+<td>git show <code>&lt;tagname&gt;</code></td>
+</tr>
+<tr>
+<td>删除标签</td>
+<td>git tag -d <code>&lt;tagname&gt;</code></td>
+</tr>
+<tr>
+<td>推送某个标签到远程</td>
+<td>git push origin <code>&lt;tagname&gt;</code></td>
+</tr>
+<tr>
+<td>推送所有未推送到远程的本地标签</td>
+<td>git push origin &ndash;tags</td>
+</tr>
+<tr>
+<td>合并远程仓库的标签到本地</td>
+<td>git pull origin &ndash;tags</td>
+</tr>
+<tr>
+<td>删除远程标签</td>
+<td>git push origin :refs/tags/ <code>&lt;tagname&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>如果要删除远程分支，需要</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback"># 首先删除本地tag，假如tag是v0.9
+
+git tag -d v0.9
+
+# 再从远程删除
+
+git push origin :refs/tags/v0.9
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="8-查看记录-">8. 查看记录</h3>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>base</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提交历史</td>
+<td>git log / git log &ndash;pretty=online</td>
+</tr>
+<tr>
+<td>当前仓库状态</td>
+<td>git status</td>
+</tr>
+<tr>
+<td>查看历史命令</td>
+<td>git reflog</td>
+</tr>
+<tr>
+<td>分支合并图</td>
+<td>git log &ndash;graph</td>
+</tr>
+<tr>
+<td>查看远程库信息</td>
+<td>git remote -v</td>
+</tr>
+</tbody>
+</table>
+<h3 id="9-提交格式-">9. 提交格式</h3>
+<p>feat: 新特性，添加功能</p>
+<p>fix: 修改bug</p>
+<p>refactor: 代码重构</p>
+<p>docs: 文档修改</p>
+<p>style: 代码格式修改, 注意不是 css 修改</p>
+<p>test: 测试用例修改</p>
+<p>chore: 其他修改, 比如构建流程, 依赖管理</p>
+<h3 id="8-git常用命令速查表-">8. Git常用命令速查表</h3>
+<p>表1</p>
+<p><img src="https://i.loli.net/2020/05/08/MWG6KybgcjtDhO2.png" alt="1. Git常用命令速查表："></p>
+<p>表2</p>
+<p><img src="https://i.loli.net/2020/05/08/etvYxVF8dJnomQb.jpg" alt="2. Git常用命令速查表："></p>
+<h3 id="转载声明">转载声明</h3>
+<blockquote>
+<p>作者：SHERlocked93<br>
+链接：<a href="https://mp.weixin.qq.com/s/3NjEAtwMP6siObJVjB_Zmg">https://mp.weixin.qq.com/s/3NjEAtwMP6siObJVjB_Zmg</a><br>
+来源：前端下午茶<br>
+著作权归作者所有，任何形式的转载都请联系作者。</p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ZzmHub</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-05-07
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/git/">Git</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/css%E5%B8%83%E5%B1%80/grid/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Grid布局常见操作</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/hugo%E5%8D%9A%E5%AE%A2/hugo-theme-even/">
+            <span class="next-text nav-default">Hugo Even主题</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:gdmec.zhi@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhimianhub" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZzmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

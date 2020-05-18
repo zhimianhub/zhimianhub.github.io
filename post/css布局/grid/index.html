@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Grid布局常见操作 - ZzmHub Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZzmHub" /><meta name="description" content="浏览器内置网格布局（Grid） Grid 布局是二维布局，Flex是一维布局 1. 基本概念 1 2 3 4 5 &amp;lt;div class=&amp;#34;container&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;item&amp;#34;&amp;gt;&amp;lt;p&amp;gt;1&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item&amp;#34;&amp;gt;&amp;lt;p&amp;gt;2&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item&amp;#34;&amp;gt;&amp;lt;p&amp;gt;3&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 最外层元素是整个大容器（contai" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.2 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/css%E5%B8%83%E5%B1%80/grid/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.4eb71590ad024de2ebb1b5eef94cbb645b7e63e6b9c4c837355530a75e112ce1.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Grid布局常见操作" />
+<meta property="og:description" content="浏览器内置网格布局（Grid） Grid 布局是二维布局，Flex是一维布局 1. 基本概念 1 2 3 4 5 &lt;div class=&#34;container&#34;&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;1&lt;/p&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;2&lt;/p&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;3&lt;/p&gt;&lt;/div&gt; &lt;/div&gt; 最外层元素是整个大容器（contai" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/css%E5%B8%83%E5%B1%80/grid/" />
+<meta property="article:published_time" content="2020-05-18T15:26:38+08:00" />
+<meta property="article:modified_time" content="2020-05-18T15:26:38+08:00" />
+<meta itemprop="name" content="Grid布局常见操作">
+<meta itemprop="description" content="浏览器内置网格布局（Grid） Grid 布局是二维布局，Flex是一维布局 1. 基本概念 1 2 3 4 5 &lt;div class=&#34;container&#34;&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;1&lt;/p&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;2&lt;/p&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;3&lt;/p&gt;&lt;/div&gt; &lt;/div&gt; 最外层元素是整个大容器（contai">
+<meta itemprop="datePublished" content="2020-05-18T15:26:38&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-18T15:26:38&#43;08:00" />
+<meta itemprop="wordCount" content="2089">
+
+
+
+<meta itemprop="keywords" content="Grid," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Grid布局常见操作"/>
+<meta name="twitter:description" content="浏览器内置网格布局（Grid） Grid 布局是二维布局，Flex是一维布局 1. 基本概念 1 2 3 4 5 &lt;div class=&#34;container&#34;&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;1&lt;/p&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;2&lt;/p&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;3&lt;/p&gt;&lt;/div&gt; &lt;/div&gt; 最外层元素是整个大容器（contai"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZzmHub</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZzmHub</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Grid布局常见操作</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-05-18 </span>
+        <div class="post-category">
+            <a href="/categories/css%E5%B8%83%E5%B1%80/"> css布局 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#__浏览器内置网格布局grid__"><strong>浏览器内置网格布局（Grid）</strong></a>
+      <ul>
+        <li><a href="#1-基本概念">1. 基本概念</a></li>
+        <li><a href="#2-grid-template-列宽行高">2. grid-template-列宽行高</a></li>
+        <li><a href="#3-gap-行列间距">3. gap-行列间距</a></li>
+        <li><a href="#4-grid-template-areas---定义区域">4. grid-template-areas&mdash;定义区域</a></li>
+        <li><a href="#5-grid-auto-flow---执行顺序">5. grid-auto-flow&mdash;执行顺序</a></li>
+        <li><a href="#6-垂直水平居中方式">6. 垂直水平居中方式</a></li>
+        <li><a href="#7-grid-area---指定项目的位置占比">7. grid-area&mdash;<strong>指定项目的位置占比</strong></a></li>
+        <li><a href="#8-指定区域外网格宽高">8. 指定区域外网格宽高</a></li>
+        <li><a href="#转载声明">转载声明</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="__浏览器内置网格布局grid__"><strong>浏览器内置网格布局（Grid）</strong></h2>
+<p><strong>Grid 布局是二维布局，Flex是一维布局</strong></p>
+<h3 id="1-基本概念">1. 基本概念</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">&lt;div class=&#34;container&#34;&gt;
+  &lt;div class=&#34;item&#34;&gt;&lt;p&gt;1&lt;/p&gt;&lt;/div&gt;
+  &lt;div class=&#34;item&#34;&gt;&lt;p&gt;2&lt;/p&gt;&lt;/div&gt;
+  &lt;div class=&#34;item&#34;&gt;&lt;p&gt;3&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>最外层元素是整个大容器（container）</li>
+<li>顶层子元素为容器的项目（item），p元素不是项目</li>
+<li>划分网格的线，称为&quot;网格线&rdquo;，n行有n + 1根水平网格线，m列有m + 1根垂直网格线</li>
+<li>默认情况下，容器元素都是块级元素（ <code>display: grid;</code> ），但也可以设成行内元素（ <code>display: inline-grid;</code> ）。</li>
+</ol>
+<p><strong>注意：</strong> 注意，设为网格布局以后，容器子元素（项目）的float、display: inline-block、display: table-cell、vertical-align和column-*等设置都将失效。</p>
+<h3 id="2-grid-template-列宽行高">2. grid-template-列宽行高</h3>
+<p><code>grid-template</code> 属性是 <code>grid-template-rows</code> 、<code>grid-template-columns</code> 和 <code>grid-template-areas</code> 这三个属性的合并简写形式。</p>
+<p><code>grid</code> 属性是 <code>grid-template-rows</code> 、 <code>grid-template-columns</code> 、 <code>grid-template-areas</code> 、 <code>grid-auto-rows</code> 、 <code>grid-auto-columns</code> 、 <code>grid-auto-flow</code>这六个属性的合并简写形式。</p>
+<p>从易读易写的角度考虑，还是建议不要合并属性。</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>base</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grid-template-rows</td>
+<td><code>100px 100px 100px</code></td>
+<td>定义每一行的行高</td>
+</tr>
+<tr>
+<td>grid-template-columns</td>
+<td><code>33.33% 33.33% 33.33%</code></td>
+<td>使用百分比</td>
+</tr>
+<tr>
+<td></td>
+<td><code>repeat(3, 33.33%)</code></td>
+<td>简化重复项</td>
+</tr>
+<tr>
+<td></td>
+<td><code>repeat(2, 100px 20px 80px)</code></td>
+<td>重复某种模式</td>
+</tr>
+<tr>
+<td></td>
+<td><code>repeat(auto-fill, 100px)</code></td>
+<td>自动填充n个100px</td>
+</tr>
+<tr>
+<td></td>
+<td><code>1fr 2fr</code></td>
+<td>&ldquo;片段&rdquo;,<code>一倍 两倍</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>150px 1fr 2fr</code></td>
+<td><code>3 * fr = 整体宽度 - 150px</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>1fr 1fr minmax(100px, 1fr)</code></td>
+<td>长度范围(不小于100px，不大于1fr)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>100px auto 100px</code></td>
+<td><code>auto自定义长度 = 整体宽度 - 200px</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>[c1] 100px [c2] 100px [c3] auto [c4]</code></td>
+<td>指定每一根网格线的名字与对应长度</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-gap-行列间距">3. gap-行列间距</h3>
+<p>gap属性是column-gap和row-gap的合并简写形式，语法如下：</p>
+<p><code>gap: &lt;row-gap&gt; &lt;column-gap&gt;</code></p>
+<p>如果gap省略了第二个值，浏览器认为第二个值等于第一个值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">gap: 20px 30px;
+
+==========
+
+row-gap: 20px;  行间距
+column-gap: 30px; 列间距
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4-grid-template-areas---定义区域">4. grid-template-areas&mdash;定义区域</h3>
+<p>划分出9个单元格，然后将其定名为a到i的九个区域，分别对应这九个单元格</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">.container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-template-areas: &#39;a b c&#39;
+                       &#39;d e f&#39;
+                       &#39;g h i&#39;;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>如果某些区域不需要利用，则使用&quot;点&rdquo;（<code>.</code>）表示</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">grid-template-areas: &#39;a . c&#39;
+                     &#39;d . f&#39;
+                     &#39;g . i&#39;;
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注意，区域的命名会影响到网格线。每个区域的起始网格线，会自动命名为区域名-start，终止网格线自动命名为区域名-end。</strong></p>
+<p><strong>比如，区域名为header，则起始位置的水平网格线和垂直网格线叫做header-start，终止位置的水平网格线和垂直网格线叫做header-end。</strong></p>
+<h3 id="5-grid-auto-flow---执行顺序">5. grid-auto-flow&mdash;执行顺序</h3>
+<p>默认的放置顺序是&quot;先行后列&rdquo;: <code>grid-auto-flow: row</code></p>
+<table>
+<thead>
+<tr>
+<th>参数值</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>row</td>
+<td>先行后列</td>
+</tr>
+<tr>
+<td>column</td>
+<td>先列后行</td>
+</tr>
+<tr>
+<td>row dense</td>
+<td>先行后列（尽可能紧密填满，尽量不出现空格）</td>
+</tr>
+<tr>
+<td>column dense</td>
+<td>先列后行（尽可能紧密填满，尽量不出现空格）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="6-垂直水平居中方式">6. 垂直水平居中方式</h3>
+<h4 id="__容器container网格布局__"><strong>容器container网格布局</strong></h4>
+<p><code>place-content</code> 属性是 <code>align-content</code> 属性和 <code>justify-content</code> 属性的合并简写形式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">place-content: &lt;align-content&gt; &lt;justify-content&gt;
+
+========
+
+place-content: space-around space-evenly;
+</code></pre></td></tr></table>
+</div>
+</div><p><code>justify-content</code> 属性是整个内容区域在容器里面（ <code>container</code> ）的水平位置（左中右）。</p>
+<p><code>align-content</code> 属性是整个内容区域（ <code>container</code> ）的垂直位置（上中下）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">.container {
+  justify-content: start | end | center | stretch | space-around | space-between | space-evenly;
+  align-content: start | end | center | stretch | space-around | space-between | space-evenly;
+}
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li><code>stretch</code>：项目大小没有指定时，拉伸占据整个网格容器。</li>
+<li><code>space-around</code>: 每个项目两侧的间隔相等（2 | 4 | 4 | 4 | 2）。</li>
+<li><code>space-evenly</code>：每个项目两侧的间隔相等（4 | 4 | 4 | 4 | 4）。</li>
+<li><code>space-between</code>：每个项目两侧的间隔相等（0 | 4 | 4 | 4 | 0）。</li>
+</ol>
+<h4 id="__项目item网格布局__"><strong>项目item网格布局</strong></h4>
+<p><code>place-items</code> 属性是 <code>align-items</code> 属性和 <code>justify-items</code> 属性的合并简写形式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">place-items: &lt;align-items&gt; &lt;justify-items&gt;;
+
+========
+
+place-items: start end;
+</code></pre></td></tr></table>
+</div>
+</div><p><code>justify-items</code> 属性设置单元格内容（<code>item</code>）的水平位置（左中右），<code>align-items</code> 属性设置单元格内容（<code>item</code>）的垂直位置（上中下）。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">.container {
+  justify-items: start | end | center | stretch;
+  align-items: start | end | center | stretch;
+}
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="__单个项目item网格布局__"><strong>单个项目item网格布局</strong></h4>
+<p><code>place-self</code> 属性是 <code>align-self</code> 属性和 <code>justify-self</code> 属性的合并简写形式。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">place-self: &lt;align-self&gt; &lt;justify-self&gt;;
+
+==========
+
+place-self: center center;
+</code></pre></td></tr></table>
+</div>
+</div><p><code>justify-self</code> 属性设置单元格内容的水平位置（左中右），跟 <code>justify-items</code> 属性的用法完全一致，但只作用于单个项目。</p>
+<p><code>align-self</code> 属性设置单元格内容的垂直位置（上中下），跟 <code>align-items</code> 属性的用法完全一致，也是只作用于单个项目。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">.item {
+  justify-self: start | end | center | stretch;
+  align-self: start | end | center | stretch;
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="7-grid-area---指定项目的位置占比">7. grid-area&mdash;<strong>指定项目的位置占比</strong></h3>
+<p><code>grid-area</code> 属性可用作 <code>grid-row-start</code> 、 <code>grid-column-start</code> 、 <code>grid-row-end</code> 、 <code>grid-column-end</code> 的合并简写形式</p>
+<table>
+<thead>
+<tr>
+<th>父项</th>
+<th>子项</th>
+<th>孙项</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grid-area</td>
+<td>grid-row</td>
+<td>grid-row-start</td>
+<td>上边框所在的水平网格线</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>grid-row-end</td>
+<td>下边框所在的水平网格线</td>
+</tr>
+<tr>
+<td>-</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>grid-column</td>
+<td>grid-column-start</td>
+<td>左边框所在的垂直网格线</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>grid-column-end</td>
+<td>右边框所在的垂直网格线</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">.item {
+  grid-area: &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;;
+}
+
+=======
+
+.item-1 {
+  grid-area: 1 / 1 / 3 / 3;
+}
+
+=======
+
+.item-1 {
+  grid-row: 1 / 3;
+  grid-column: 1 / 3;
+}
+
+=======
+
+.item-1 {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+
+=======
+
+
+网格线命名
+.item-1 {
+  grid-area: header-start / footer-start / header-end / footer-end;
+}
+</code></pre></td></tr></table>
+</div>
+</div><p><code>grid-area</code> 属性指定项目放在哪一个区域（区域命名）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">.item-1 {
+  grid-area: e;
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="8-指定区域外网格宽高">8. 指定区域外网格宽高</h3>
+<p><code>grid-auto-columns</code> 属性和 <code>grid-auto-rows</code> 属性用来设置，浏览器自动创建的多余网格的列宽和行高。它们的写法与 <code>grid-template-columns</code> 和 <code>grid-template-rows</code> 完全相同。如果不指定这两个属性，浏览器完全根据单元格内容的大小，决定新增网格的列宽和行高。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">.container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-template-rows: 100px 100px 100px;
+  grid-auto-rows: 50px;
+  grid-auto-columns: 100px;
+}
+
+.item-1 {
+  background-color: #d0e4a9;
+  grid-row-start: 4;
+  grid-column-start: 2;
+}
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="转载声明">转载声明</h3>
+<blockquote>
+<p>作者：阮一峰<br>
+链接：<a href="http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html">http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html</a><br>
+来源：阮一峰的网络日志<br>
+著作权归作者所有，任何形式的转载都请联系作者。</p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ZzmHub</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-05-18
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/grid/">Grid</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/git/git-command/">
+            <span class="next-text nav-default">Git常用命令总结</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:gdmec.zhi@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhimianhub" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZzmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
