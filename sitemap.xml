@@ -3,7 +3,42 @@
   
   <url>
     <loc>http://localhost:1313/categories/</loc>
-    <lastmod>2020-05-18T15:26:38+08:00</lastmod>
+    <lastmod>2020-05-19T09:26:38+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/%E4%BB%A3%E7%A0%81%E9%AA%9A%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2020-05-19T09:26:38+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/post/</loc>
+    <lastmod>2020-05-19T09:26:38+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2020-05-19T09:26:38+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/categories/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/</loc>
+    <lastmod>2020-05-19T09:26:38+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/tags/%E4%BB%A3%E7%A0%81%E9%AA%9A%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2020-05-19T09:26:38+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -24,20 +59,6 @@
   
   <url>
     <loc>http://localhost:1313/post/css%E5%B8%83%E5%B1%80/grid/</loc>
-    <lastmod>2020-05-18T15:26:38+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/post/</loc>
-    <lastmod>2020-05-18T15:26:38+08:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2020-05-18T15:26:38+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Js实用技巧 - ZzmHub Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZzmHub" /><meta name="description" content="字符串String 1. 使用 &#43; 符号类型转换，只对 null、&amp;quot;&amp;quot;、false、数值字符串 有效 1 2 3 4 5 6 7 8 9 10 11 12 13 const num1 = &#43;null;" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.2 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/%E4%BB%A3%E7%A0%81%E9%AA%9A%E6%93%8D%E4%BD%9C/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.4eb71590ad024de2ebb1b5eef94cbb645b7e63e6b9c4c837355530a75e112ce1.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Js实用技巧" />
+<meta property="og:description" content="字符串String 1. 使用 &#43; 符号类型转换，只对 null、&quot;&quot;、false、数值字符串 有效 1 2 3 4 5 6 7 8 9 10 11 12 13 const num1 = &#43;null;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/%E4%BB%A3%E7%A0%81%E9%AA%9A%E6%93%8D%E4%BD%9C/" />
+<meta property="article:published_time" content="2020-05-19T09:26:38+08:00" />
+<meta property="article:modified_time" content="2020-05-19T09:26:38+08:00" />
+<meta itemprop="name" content="Js实用技巧">
+<meta itemprop="description" content="字符串String 1. 使用 &#43; 符号类型转换，只对 null、&quot;&quot;、false、数值字符串 有效 1 2 3 4 5 6 7 8 9 10 11 12 13 const num1 = &#43;null;">
+<meta itemprop="datePublished" content="2020-05-19T09:26:38&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-19T09:26:38&#43;08:00" />
+<meta itemprop="wordCount" content="1641">
+
+
+
+<meta itemprop="keywords" content="代码骚操作," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Js实用技巧"/>
+<meta name="twitter:description" content="字符串String 1. 使用 &#43; 符号类型转换，只对 null、&quot;&quot;、false、数值字符串 有效 1 2 3 4 5 6 7 8 9 10 11 12 13 const num1 = &#43;null;"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZzmHub</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZzmHub</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Js实用技巧</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-05-19 </span>
+        <div class="post-category">
+            <a href="/categories/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/"> 代码优化 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#字符串string">字符串String</a></li>
+        <li><a href="#数组array">数组Array</a></li>
+        <li><a href="#对象object">对象Object</a></li>
+        <li><a href="#位运算">位运算</a></li>
+        <li><a href="#彩蛋---键盘">彩蛋&mdash;键盘</a></li>
+        <li><a href="#转载声明">转载声明</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h3 id="字符串string">字符串String</h3>
+<p><strong>1. 使用 <code>+</code> 符号类型转换，只对 <code>null、&quot;&quot;、false、数值字符串</code> 有效</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kr">const</span> <span class="nx">num1</span> <span class="o">=</span> <span class="o">+</span><span class="kc">null</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">num2</span> <span class="o">=</span> <span class="o">+</span><span class="s2">&#34;&#34;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">num3</span> <span class="o">=</span> <span class="o">+</span><span class="kc">false</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">num4</span> <span class="o">=</span> <span class="o">+</span><span class="s2">&#34;369&#34;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">num5</span> <span class="o">=</span> <span class="o">+</span><span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+
+<span class="c1">// num1 num2 num3 num4 =&gt; 0 0 0 169 1589853415673
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>2. 日期Date</strong></p>
+<p>使用当前时间创建一个随机数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="c1">//--- before ---
+</span><span class="c1"></span><span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">|</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1">// --- after ---
+</span><span class="c1"></span><span class="kd">let</span> <span class="nx">a</span><span class="p">;</span>
+
+<span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span> <span class="o">%</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">// 两位随机数
+</span><span class="c1"></span>
+<span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span> <span class="o">%</span> <span class="mi">1000</span><span class="p">;</span> <span class="c1">// 三位随机数
+</span><span class="c1"></span>
+<span class="nx">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span> <span class="o">%</span> <span class="mi">10000</span><span class="p">;</span> <span class="c1">// 四位随机数...依次类推
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p>时间对比，因为字符串比较大小是按照字符串从左到右每个字符的charCode来的，但所以特别要注意时间形式注意补0</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kr">const</span> <span class="nx">time1</span> <span class="o">=</span> <span class="s2">&#34;2020-02-14 21:00:00&#34;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">time2</span> <span class="o">=</span> <span class="s2">&#34;2020-05-01 09:00:00&#34;</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">time1</span> <span class="o">&lt;</span> <span class="nx">time2</span><span class="p">);</span> <span class="c1">// true
+</span><span class="c1"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;2020-02-14&#39;</span> <span class="o">&lt;</span> <span class="s1">&#39;2020-05-01&#39;</span><span class="p">);</span> <span class="c1">// true
+</span><span class="c1"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;21:00&#39;</span> <span class="o">&gt;</span> <span class="s1">&#39;09:00&#39;</span><span class="p">);</span> <span class="c1">// true
+</span><span class="c1"></span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>3. 补零</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kr">const</span> <span class="nx">addZero1</span> <span class="o">=</span> <span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="sb">`0</span><span class="si">${</span><span class="nx">num</span><span class="si">}</span><span class="sb">`</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="nx">len</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">addZero2</span> <span class="o">=</span> <span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">num</span><span class="si">}</span><span class="sb">`</span><span class="p">).</span><span class="nx">padStart</span><span class="p">(</span> <span class="nx">len</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">);</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>4. 使用toString()取随机字符串</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kr">const</span> <span class="nx">RandomId</span> <span class="o">=</span> <span class="nx">len</span> <span class="p">=&gt;</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">().</span><span class="nx">toString</span><span class="p">(</span><span class="mi">36</span><span class="p">).</span><span class="nx">substr</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nx">len</span><span class="p">);</span>
+
+<span class="kr">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="nx">RandomId</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+
+<span class="c1">// id =&gt; &#34;jg7zpgiqva&#34;
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>.substring() 的第二个参数控制取多少位 (最多可取13位)</p>
+</blockquote>
+<p><strong>5. 使用repeat来重复字符</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="c1">// --- before ---
+</span><span class="c1"></span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="nx">i</span><span class="o">--</span><span class="p">;)</span> <span class="nx">a</span><span class="o">+=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// --- after ---
+</span><span class="c1"></span>
+<span class="kd">let</span> <span class="nx">b</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">7</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="c1">// &#34;0000000&#34;
+</span><span class="c1"></span>
+<span class="kd">let</span> <span class="nx">c</span> <span class="o">=</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">7</span><span class="p">).</span><span class="nx">join</span><span class="p">(</span> <span class="nx">La</span> <span class="p">)</span> <span class="c1">// &#34;LaLaLaLaLaLa&#34;
+</span><span class="c1"></span>
+<span class="c1">// ES6
+</span><span class="c1"></span><span class="kd">let</span> <span class="nx">d</span> <span class="o">=</span> <span class="s2">&#34;0&#34;</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="mi">7</span><span class="p">);</span> <span class="c1">// &#34;0000000&#34;
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>6. 使用 1/0 来替代 Infinity</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="c1">// --- before ---
+</span><span class="c1"></span>
+<span class="p">[</span><span class="kc">Infinity</span><span class="p">,</span> <span class="o">-</span><span class="kc">Infinity</span><span class="p">]</span>
+
+<span class="c1">// --- after ---
+</span><span class="c1"></span>
+<span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">]</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>7. 精确到指定位数的小数</strong></p>
+<p>浮点数精度问题</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="mf">5.1</span> <span class="o">*</span> <span class="mi">100</span>  <span class="c1">// 509.99999999999994
+</span><span class="c1"></span>
+<span class="mf">5.19</span> <span class="o">*</span> <span class="mi">10</span> <span class="c1">// 51.900000000000006
+</span><span class="c1"></span>
+<span class="o">========</span>
+
+<span class="mf">5.1e2</span> <span class="c1">// 510
+</span><span class="c1"></span>
+<span class="mf">5.19e1</span> <span class="c1">// 51.9
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p>推荐使用指数e</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kr">const</span> <span class="nx">round</span> <span class="o">=</span> <span class="p">(</span><span class="nx">n</span><span class="p">,</span> <span class="nx">decimals</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nb">Number</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">n</span><span class="si">}</span><span class="sb">e</span><span class="si">${</span><span class="nx">decimals</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span><span class="si">}</span><span class="sb">e-</span><span class="si">${</span><span class="nx">decimals</span><span class="si">}</span><span class="sb">`</span><span class="p">)</span>
+
+<span class="nx">round</span><span class="p">(</span><span class="mf">1.345</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1">// 1.35
+</span><span class="c1"></span>
+<span class="nx">round</span><span class="p">(</span><span class="mf">1.345</span><span class="p">)</span> <span class="c1">// 1
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="数组array">数组Array</h3>
+<p><strong>1. 数组赋值</strong></p>
+<p>创建100个值的数组，并为之赋值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">3</span><span class="p">).</span><span class="nx">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1">// 全部填充为0
+</span><span class="c1"></span>
+<span class="o">=========</span>
+
+<span class="p">[...</span><span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">100</span><span class="p">).</span><span class="nx">keys</span><span class="p">()]</span> <span class="c1">// 填充其下标
+</span><span class="c1"></span>
+<span class="o">=========</span>
+
+<span class="nb">Array</span><span class="p">.</span><span class="nx">form</span><span class="p">({</span> <span class="nx">length</span><span class="o">:</span> <span class="mi">100</span> <span class="p">},</span> <span class="p">(</span><span class="nx">x</span><span class="p">,</span> <span class="nx">y</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="nx">y</span><span class="p">)</span> <span class="c1">// 填充其下标
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>2. 使用Boolean过滤数组中的所有假值</strong></p>
+<p>假值：false， null， 0， &ldquo;&quot;， undefined， NaN</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kr">const</span> <span class="nx">compact</span> <span class="o">=</span> <span class="nx">arr</span> <span class="p">=&gt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nb">Boolean</span><span class="p">);</span>
+
+<span class="nx">compact</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span> <span class="o">*</span> <span class="mi">23</span><span class="p">,</span> <span class="kc">NaN</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="mi">34</span><span class="p">])</span>
+
+<span class="c1">// [ 1, 2, 3, &#39;a&#39;, &#39;s&#39;, 34 ]
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="对象object">对象Object</h3>
+<p><strong>1. JSON.stringify技巧</strong></p>
+<p><code>JSON.stringify(value[, replacer [, space]])</code></p>
+<p>常用对象深拷贝</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kd">var</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">week</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nx">month</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="nx">day</span><span class="o">:</span> <span class="mi">3</span>
+<span class="p">}</span>
+
+<span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">obj</span><span class="p">))</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>只保留 “week” 和 “month” 属性值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;week&#39;</span><span class="p">,</span> <span class="s1">&#39;month&#39;</span><span class="p">]))</span>
+
+<span class="c1">// { &#34;week&#34;: 1, &#34;month&#34;: 2 }
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p>space 参数用来控制结果字符串里面的间距，缩减n个空格，美化json</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+
+<span class="s2">&#34;{
+</span><span class="s2">    &#34;</span><span class="nx">week</span><span class="s2">&#34;: 1,
+</span><span class="s2">    &#34;</span><span class="nx">month</span><span class="s2">&#34;: 2,
+</span><span class="s2">    &#34;</span><span class="nx">day</span><span class="s2">&#34;: 3
+</span><span class="s2">}&#34;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>2. 创建纯空对象</strong></p>
+<p>通过做 <code>Objist.create（NULL）</code>，我们显式指定 <code>NULL</code> 作为它的原型。所以它绝对没有属性，甚至没有 <code>构造函数、toString、hasOwnProperty</code> 属性。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kr">const</span> <span class="nx">obj</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+<span class="c1">// obj =&gt; {}
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="位运算">位运算</h3>
+<blockquote>
+<p>Javascript 完全套用了 Java 的位运算符，包括按位与 <code>&amp;</code> 、按位或 <code>|</code> 、按位异或 <code>^</code> 、按位非 <code>~</code> 、左移 <code>&lt;&lt;</code> 、带符号的右移 <code>&gt;&gt;</code> 和用0补足的右移 <code>&gt;&gt;&gt;</code> 。这套运算符针对的是整数，所以对 JavaScript 完全无用，因为 JavaScript 内部，所有数字都保存为双精度浮点数。如果使用它们的话，JavaScript <code>不得不将运算数先转为整数</code>，然后再进行运算，这样就降低了速度。而且&quot;按位与运算符&rdquo; <code>&amp;</code> 同&quot;逻辑与运算符&rdquo; <code>&amp;&amp;</code> ，很容易混淆。</p>
+</blockquote>
+<p><strong>1. 使用左移运算符 <code>&lt;&lt;</code> 迅速得出2的次方</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">2</span><span class="c1">// 4, 即 2的2次方
+</span><span class="c1"></span>
+<span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">10</span><span class="c1">// 1024, 即 2的10次方
+</span><span class="c1"></span>
+
+<span class="c1">// 但是要注意使用场景
+</span><span class="c1"></span>
+<span class="nx">a</span> <span class="o">=</span> <span class="mi">2</span><span class="nx">e9</span><span class="p">;</span>   <span class="c1">// 2000000000
+</span><span class="c1"></span>
+<span class="nx">a</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">;</span>    <span class="c1">// -294967296
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>2. 使用 <code>^</code> 切换变量 0 或 1</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="c1">// --- before ---
+</span><span class="c1"></span>
+<span class="c1">// if 判断
+</span><span class="c1"></span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">toggle</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nx">toggle</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+
+    <span class="nx">toggle</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="p">}</span>
+<span class="c1">// 三目运算符
+</span><span class="c1"></span>
+<span class="nx">togle</span> <span class="o">=</span> <span class="nx">toggle</span> <span class="o">?</span> <span class="mi">0</span> <span class="o">:</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="c1">// --- after ---
+</span><span class="c1"></span>
+<span class="nx">toggle</span> <span class="o">^=</span> <span class="mi">1</span><span class="p">;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>3. 使用 <code>^</code> 判断符号( <code>+</code> ，<code>-</code> )是否相同</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="p">(</span><span class="nx">a</span> <span class="o">^</span> <span class="nx">b</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">//  true 相同; false 不相同
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>4. 使用 <code>^</code> 来检查数字是否不相等</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="c1">// --- before ---
+</span><span class="c1"></span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">!==</span> <span class="mi">1171</span><span class="p">)</span> <span class="p">{...};</span>
+
+
+<span class="c1">// --- after ---
+</span><span class="c1"></span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">a</span> <span class="o">^</span> <span class="mi">1171</span><span class="p">)</span> <span class="p">{...};</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>5. 使用 <code>&amp;</code> 判断奇偶性</strong></p>
+<p>偶数 &amp; 1 = 0</p>
+<p>奇数 &amp; 1 = 1</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">7</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">);</span>    <span class="c1">// 1
+</span><span class="c1"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">8</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">;</span>   <span class="c1">// 0
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>6. 使用 <code>~、&gt;&gt;、&lt;&lt;、&gt;&gt;&gt;、|</code> 来取整</strong></p>
+<p>代替正数的 <code>Math.floor()</code>，代替负数的 <code>Math.ceil()</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="o">~~</span><span class="mf">11.71</span><span class="p">)</span>     <span class="c1">// 11
+</span><span class="c1"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="o">~~-</span><span class="mf">11.71</span><span class="p">)</span>     <span class="c1">// 11
+</span><span class="c1"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">11.71</span> <span class="o">&gt;&gt;</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1">// 11
+</span><span class="c1"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">11.71</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1">// 11
+</span><span class="c1"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">11.71</span> <span class="o">|</span> <span class="mi">0</span><span class="p">)</span>   <span class="c1">// 11
+</span><span class="c1"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">11.71</span> <span class="o">&gt;&gt;&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// 11
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>7. 使用 <code>A + 0.5 | 0</code> 来替代 <code>Math.round()</code></strong></p>
+<p>值为正数时</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="mf">24.7</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">a</span><span class="p">));</span> <span class="c1">// 25
+</span><span class="c1"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">|</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// 25
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p>值为负数时，只需要-0.5</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kd">let</span> <span class="nx">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">24.7</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">a</span><span class="p">));</span> <span class="c1">// 25
+</span><span class="c1"></span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">|</span> <span class="mi">0</span><span class="p">);</span> <span class="c1">// 25
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="彩蛋---键盘">彩蛋&mdash;键盘</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="p">(</span><span class="nx">_</span><span class="p">=&gt;[...</span><span class="s2">&#34;`1234567890-=~~QWERTYUIOP[]\\~ASDFGHJKL;&#39;~~ZXCVBNM,./~&#34;</span><span class="p">].</span><span class="nx">map</span><span class="p">(</span><span class="nx">x</span><span class="p">=&gt;(</span><span class="nx">o</span><span class="o">+=</span><span class="sb">`/</span><span class="si">${</span><span class="nx">b</span><span class="o">=</span><span class="s1">&#39;_&#39;</span><span class="p">.</span><span class="nx">repeat</span><span class="p">(</span><span class="nx">w</span><span class="o">=</span><span class="nx">x</span><span class="o">&lt;</span><span class="nx">y</span><span class="o">?</span><span class="mi">2</span><span class="o">:</span><span class="s1">&#39; 667699&#39;</span><span class="p">[</span><span class="nx">x</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;Bs&#34;</span><span class="p">,</span><span class="s2">&#34;Tab&#34;</span><span class="p">,</span><span class="s2">&#34;Caps&#34;</span><span class="p">,</span><span class="s2">&#34;Enter&#34;</span><span class="p">][</span><span class="nx">p</span><span class="o">++</span><span class="p">]</span><span class="o">||</span><span class="s1">&#39;Shift&#39;</span><span class="p">,</span><span class="nx">p</span><span class="p">])</span><span class="si">}</span><span class="sb">\\|`</span><span class="p">,</span><span class="nx">m</span><span class="o">+=</span><span class="nx">y</span><span class="o">+</span><span class="p">(</span><span class="nx">x</span><span class="o">+</span><span class="s1">&#39;    &#39;</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nx">w</span><span class="p">)</span><span class="o">+</span><span class="nx">y</span><span class="o">+</span><span class="nx">y</span><span class="p">,</span><span class="nx">n</span><span class="o">+=</span><span class="nx">y</span><span class="o">+</span><span class="nx">b</span><span class="o">+</span><span class="nx">y</span><span class="o">+</span><span class="nx">y</span><span class="p">,</span><span class="nx">l</span><span class="o">+=</span><span class="s1">&#39; __&#39;</span><span class="o">+</span><span class="nx">b</span><span class="p">)[</span><span class="mi">73</span><span class="p">]</span><span class="o">&amp;&amp;</span><span class="p">(</span><span class="nx">k</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">l</span><span class="p">,</span><span class="nx">m</span><span class="p">,</span><span class="nx">n</span><span class="p">,</span><span class="nx">o</span><span class="p">),</span><span class="nx">l</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="nx">m</span><span class="o">=</span><span class="nx">n</span><span class="o">=</span><span class="nx">o</span><span class="o">=</span><span class="nx">y</span><span class="p">),</span><span class="nx">m</span><span class="o">=</span><span class="nx">n</span><span class="o">=</span><span class="nx">o</span><span class="o">=</span><span class="nx">y</span><span class="o">=</span><span class="s1">&#39;|&#39;</span><span class="p">,</span><span class="nx">p</span><span class="o">=</span><span class="nx">l</span><span class="o">=</span><span class="nx">k</span><span class="o">=</span><span class="p">[])</span><span class="o">&amp;&amp;</span><span class="nx">k</span><span class="p">.</span><span class="nx">join</span><span class="sb">`
+</span><span class="sb">`</span><span class="p">)()</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="转载声明">转载声明</h3>
+<blockquote>
+<p>著作权归作者所有，任何形式的转载都请联系作者。</p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ZzmHub</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-05-19
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E4%BB%A3%E7%A0%81%E9%AA%9A%E6%93%8D%E4%BD%9C/">代码骚操作</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/css%E5%B8%83%E5%B1%80/grid/">
+            <span class="next-text nav-default">Grid布局常见操作</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:gdmec.zhi@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhimianhub" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZzmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
