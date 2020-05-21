@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Flex布局常见操作 - ZzmHub Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZzmHub" /><meta name="description" content="浏览器内置网格布局（Flex） Grid 布局是二维布局，Flex是一维布局 1. 基本概念 1 2 3 4 5 6 7 &amp;lt;div class=&amp;#34;container&amp;#34;&amp;gt; &amp;lt;div class=&amp;#34;item&amp;#34;&amp;gt;&amp;lt;p&amp;gt;1&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item&amp;#34;&amp;gt;&amp;lt;p&amp;gt;2&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;div class=&amp;#34;item&amp;#34;&amp;gt;&amp;lt;p&amp;gt;3&amp;lt;/p&amp;gt;&amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; 最外层元素是整个大容器（cont" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.2 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/css%E5%B8%83%E5%B1%80/flex/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.4eb71590ad024de2ebb1b5eef94cbb645b7e63e6b9c4c837355530a75e112ce1.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Flex布局常见操作" />
+<meta property="og:description" content="浏览器内置网格布局（Flex） Grid 布局是二维布局，Flex是一维布局 1. 基本概念 1 2 3 4 5 6 7 &lt;div class=&#34;container&#34;&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;1&lt;/p&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;2&lt;/p&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;3&lt;/p&gt;&lt;/div&gt; &lt;/div&gt; 最外层元素是整个大容器（cont" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/css%E5%B8%83%E5%B1%80/flex/" />
+<meta property="article:published_time" content="2020-05-21T11:26:05+08:00" />
+<meta property="article:modified_time" content="2020-05-21T11:26:05+08:00" />
+<meta itemprop="name" content="Flex布局常见操作">
+<meta itemprop="description" content="浏览器内置网格布局（Flex） Grid 布局是二维布局，Flex是一维布局 1. 基本概念 1 2 3 4 5 6 7 &lt;div class=&#34;container&#34;&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;1&lt;/p&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;2&lt;/p&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;3&lt;/p&gt;&lt;/div&gt; &lt;/div&gt; 最外层元素是整个大容器（cont">
+<meta itemprop="datePublished" content="2020-05-21T11:26:05&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-21T11:26:05&#43;08:00" />
+<meta itemprop="wordCount" content="2053">
+
+
+
+<meta itemprop="keywords" content="Flex," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Flex布局常见操作"/>
+<meta name="twitter:description" content="浏览器内置网格布局（Flex） Grid 布局是二维布局，Flex是一维布局 1. 基本概念 1 2 3 4 5 6 7 &lt;div class=&#34;container&#34;&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;1&lt;/p&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;2&lt;/p&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;3&lt;/p&gt;&lt;/div&gt; &lt;/div&gt; 最外层元素是整个大容器（cont"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZzmHub</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZzmHub</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Flex布局常见操作</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-05-21 </span>
+        <div class="post-category">
+            <a href="/categories/css%E5%B8%83%E5%B1%80/"> css布局 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#__浏览器内置网格布局flex__"><strong>浏览器内置网格布局（Flex）</strong></a>
+      <ul>
+        <li><a href="#1-基本概念">1. 基本概念</a></li>
+        <li><a href="#2-flex-flow---排列换行">2. flex-flow&mdash;排列换行</a></li>
+        <li><a href="#3-flex-direction---排列方向">3. flex-direction&mdash;排列方向</a></li>
+        <li><a href="#4-flex-wrap---换行">4. flex-wrap&mdash;换行</a></li>
+        <li><a href="#5-justify-content---水平居中">5. justify-content&mdash;水平居中</a></li>
+        <li><a href="#6-align-items---垂直居中">6. align-items&mdash;垂直居中</a></li>
+        <li><a href="#7-align-content-多行垂直居中">7. align-content 多行垂直居中</a></li>
+        <li><a href="#8-flex---放大收缩比例">8. flex&mdash;放大收缩比例</a></li>
+        <li><a href="#9-flex-grow---放大比例">9. flex-grow&mdash;放大比例</a></li>
+        <li><a href="#10-flex-shrink---收缩比例">10. flex-shrink&mdash;收缩比例</a></li>
+        <li><a href="#11-flex-basis---定义元素默认宽度">11. flex-basis&mdash;定义元素默认宽度</a></li>
+        <li><a href="#12-order排列顺序">12. order排列顺序</a></li>
+        <li><a href="#13-align-self---单个子项垂直居中">13. align-self&mdash;单个子项垂直居中</a></li>
+        <li><a href="#转载声明">转载声明</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="__浏览器内置网格布局flex__"><strong>浏览器内置网格布局（Flex）</strong></h2>
+<p><strong>Grid 布局是二维布局，Flex是一维布局</strong></p>
+<h3 id="1-基本概念">1. 基本概念</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html">
+<span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;container&#34;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;item&#34;</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;item&#34;</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;</span>2<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&#34;item&#34;</span><span class="p">&gt;&lt;</span><span class="nt">p</span><span class="p">&gt;</span>3<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>最外层元素是整个大容器（container）</li>
+<li>顶层子元素为容器的项目（item），p元素不是项目</li>
+<li>默认情况下，容器元素都是块级元素（ <code>display: flex;</code> ），但也可以设成行内元素（ <code>display: inline-flex;</code> ）。</li>
+</ul>
+<p><strong>注意：</strong> 设为 Flex 布局以后，子元素的float、clear和vertical-align属性将失效。</p>
+<table>
+<thead>
+<tr>
+<th>作用在container容器上</th>
+<th>作用在item子项上</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#2-flex-flow---%E6%8E%92%E5%88%97%E6%8D%A2%E8%A1%8C">flex-flow</a></td>
+<td><a href="#8-flex---%E6%94%BE%E5%A4%A7%E6%94%B6%E7%BC%A9%E6%AF%94%E4%BE%8B">flex</a></td>
+</tr>
+<tr>
+<td><a href="#3-flex-direction---%E6%8E%92%E5%88%97%E6%96%B9%E5%90%91">flex-direction</a></td>
+<td><a href="#9-flex-grow---%E6%94%BE%E5%A4%A7%E6%AF%94%E4%BE%8B">flex-grow</a></td>
+</tr>
+<tr>
+<td><a href="#4-flex-wrap---%E6%8D%A2%E8%A1%8C">flex-wrap</a></td>
+<td><a href="#10-flex-shrink---%E6%94%B6%E7%BC%A9%E6%AF%94%E4%BE%8B">flex-shrink</a></td>
+</tr>
+<tr>
+<td></td>
+<td><a href="#11-flex-basis---%E5%AE%9A%E4%B9%89%E5%85%83%E7%B4%A0%E9%BB%98%E8%AE%A4%E5%AE%BD%E5%BA%A6">flex-basis</a></td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="#5-justify-content---%E6%B0%B4%E5%B9%B3%E5%B1%85%E4%B8%AD">justify-content</a></td>
+<td><a href="#12-order%E6%8E%92%E5%88%97%E9%A1%BA%E5%BA%8F">order</a></td>
+</tr>
+<tr>
+<td><a href="#6-align-items---%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD">align-items</a></td>
+<td><a href="#13-align-self---%E5%8D%95%E4%B8%AA%E5%AD%90%E9%A1%B9%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD">align-self</a></td>
+</tr>
+<tr>
+<td><a href="#7-align-content-%E5%A4%9A%E8%A1%8C%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD">align-content</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-flex-flow---排列换行">2. flex-flow&mdash;排列换行</h3>
+<p><code>flex-flow</code> 属性是 <code>flex-direction</code> 和 <code>flex-wrap</code> 的缩写，表示flex布局的flow流动特性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css">
+<span class="nt">flex-flow</span><span class="o">:</span> <span class="o">&lt;</span><span class="s1">&#39;flex-direction&#39;</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="s1">&#39;flex-wrap&#39;</span><span class="o">&gt;</span>
+
+<span class="o">=======</span>
+
+<span class="p">.</span><span class="nc">container</span> <span class="p">{</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">flex</span><span class="p">;</span>
+    <span class="k">flex-flow</span><span class="p">:</span> <span class="kc">row</span><span class="o">-</span><span class="kc">reverse</span> <span class="kc">wrap</span><span class="o">-</span><span class="kc">reverse</span><span class="p">;</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3-flex-direction---排列方向">3. flex-direction&mdash;排列方向</h3>
+<p><code>flex-direction</code> 用来控制子项整体布局方向(上下左右)</p>
+<p><code>flex-direction: row | row-reverse | column | column-reverse;</code></p>
+<h3 id="4-flex-wrap---换行">4. flex-wrap&mdash;换行</h3>
+<p><code>flex-wrap</code> 用来控制子项整体单行显示还是换行显示</p>
+<p><code>flex-wrap: nowrap | wrap | wrap-reverse;</code></p>
+<ul>
+<li>
+<p><code>nowrap</code>: 默认值，表示单行显示，不换行。</p>
+</li>
+<li>
+<p><code>wrap</code>: 宽度不足换行显示</p>
+</li>
+<li>
+<p><code>wrap-reverse</code>: 宽度不足换行显示，但是是从下往上开始，也就是原本换行在下面的子项现在跑到上面。</p>
+</li>
+</ul>
+<h3 id="5-justify-content---水平居中">5. justify-content&mdash;水平居中</h3>
+<p><code>justify-content</code> 属性决定了水平方向子项的对齐和分布方式</p>
+<p><code>justify-content: flex-start | flex-end | center | space-around | space-evenly | space-between;</code></p>
+<ul>
+<li><code>space-around</code>: 每个项目两侧的间隔相等（2 | 4 | 4 | 4 | 2）。</li>
+<li><code>space-evenly</code>：每个项目两侧的间隔相等（4 | 4 | 4 | 4 | 4）。</li>
+<li><code>space-between</code>：每个项目两侧的间隔相等（0 | 4 | 4 | 4 | 0）。</li>
+</ul>
+<h3 id="6-align-items---垂直居中">6. align-items&mdash;垂直居中</h3>
+<p><code>align-items</code> 属性决定了垂直方向子项的对齐和分布方式</p>
+<p><code>align-items: stretch | flex-start | flex-end | center | baseline;</code></p>
+<ul>
+<li>
+<p><code>baseline</code>: 项目的第一行文字的基线对齐</p>
+</li>
+<li>
+<p><code>stretch</code>（默认值）：如果项目未设置高度或设为auto，将拉伸占满整个容器的高度</p>
+</li>
+</ul>
+<h3 id="7-align-content-多行垂直居中">7. align-content 多行垂直居中</h3>
+<p>多行垂直方向子项的对齐和分布方式，如果所有 <code>flex</code> 子项只有一行，则 <code>align-content</code>属性是没有任何效果的。</p>
+<p><code>align-content: stretch | flex-start | flex-end | center | space-between | space-around | space-evenly;</code></p>
+<ul>
+<li><code>stretch</code>: 每一行flex子元素都等比例拉伸。</li>
+</ul>
+<h3 id="8-flex---放大收缩比例">8. flex&mdash;放大收缩比例</h3>
+<p><code>flex</code> 属性是 <code>flex-grow</code> ，<code>flex-shrink</code> 和 <code>flex-basis</code> 的缩写。</p>
+<p><code>flex: none | auto | [ &lt;'flex-grow'&gt; &lt;'flex-shrink'&gt; &lt;'flex-basis'&gt; ]</code></p>
+<p>其中第2和第3个参数（ <code>flex-shrink</code> 和 <code>flex-basis</code> ）是可选的。默认值为 <code>0 1 auto</code> 。</p>
+<ul>
+<li><code>flex</code> 默认值等同于 <code>flex: 0 1 auto</code>；</li>
+<li><code>flex:none</code> 等同于 <code>flex: 0 0 auto</code>；</li>
+<li><code>flex:auto</code> 等同于 <code>flex: 1 1 auto</code>；</li>
+</ul>
+<h3 id="9-flex-grow---放大比例">9. flex-grow&mdash;放大比例</h3>
+<p><code>flex-grow</code> 属性定义项目的放大比例，默认为 <code>0</code> ，即如果存在剩余空间，也不放大。</p>
+<p><code>flex-grow: &lt;number&gt;; /* 数值，可以是小数，默认值是 0，不支持负值 */</code></p>
+<p>规则如下：</p>
+<p><strong>所有剩余空间总量是1。</strong></p>
+<p><strong>如果只有一个 flex 元素设置了 flex-grow 属性值：</strong></p>
+<p><code>a.</code> 如果 <code>flex-grow </code>值小于1，则分配给它的是总剩余空间和这个比例的计算值。例如一个 0.5 的元素能分到一半的剩余空间。</p>
+<p><code>b.</code> 如果 <code>flex-grow</code> 值大于等于1，则独享所有剩余空间。</p>
+<p><strong>如果有多个 flex 元素设置了 <code>flex-grow</code> 属性值：</strong></p>
+<p><code>a.</code> 如果 <code>flex-grow</code> 值总和小于1，则分配给元素的是总剩余空间和当前元素设置的 <code>flex-grow</code> 比例的计算值。例如一个 0.1 和一个 0.2 的元素，只能分别分到 1/10 和 2/10 的剩余空间，剩下的剩余空间并不会分配给它们。</p>
+<p><code>b.</code> 如果 <code>flex-grow</code> 值总和大于等于1，则所有剩余空间被利用，分配比例就是 <code>flex-grow</code> 属性值的比例。</p>
+<h3 id="10-flex-shrink---收缩比例">10. flex-shrink&mdash;收缩比例</h3>
+<p><code>flex-shrink</code> 不支持负值，默认值是1，也就是默认所有的flex子项都会收缩。如果设置为0，则表示不收缩，保持原始的 <code>fit-content</code> 宽度。</p>
+<p><code>flex-shrink: &lt;number&gt;; /* 数值，默认值是 1，不支持负值 */</code></p>
+<p>规则如下：已知flex子项不换行，且容器空间不足</p>
+<p><strong>如果只有一个 flex 元素设置了 flex-shrink：</strong></p>
+<p><code>a.</code> <code>flex-shrink</code> 值小于1，则收缩的尺寸不完全，会有一部分内容溢出 flex 容器。</p>
+<p><code>b.</code> <code>flex-shrink</code> 值大于等于1，则收缩完全，正好填满 flex 容器。</p>
+<p><strong>如果多个 flex 元素设置了 flex-shrink：</strong></p>
+<p><code>a.</code> <code>flex-shrink</code> 值的总和小于1，则收缩的尺寸不完全，每个元素收缩尺寸占“完全收缩的尺寸”的比例就是设置的 <code>flex-shrink</code> 的值。</p>
+<p><code>b.</code> <code>flex-shrink</code> 值的总和大于等于1，则收缩完全，每个元素收缩尺寸的比例和 <code>flex-shrink</code> 值的比例一样。</p>
+<h3 id="11-flex-basis---定义元素默认宽度">11. flex-basis&mdash;定义元素默认宽度</h3>
+<p><code>flex-basis</code> 定义了在分配剩余空间之前元素的默认大小。</p>
+<p><code>flex-basis: &lt;length&gt; | auto; /* 默认值是 auto */</code></p>
+<p>默认值是 <code>auto</code>，就是自动。有设置 <code>width</code> 则占据空间就是 <code>width</code>，没有设置就按内容宽度来。</p>
+<p>如果同时设置 <code>width</code> 和 <code>flex-basis</code>，就渲染表现来看，会忽略 <code>width</code>。 <code>flex</code> 顾名思义就是弹性的意思，因此，实际上不建议对 <code>flex</code> 子项使用 <code>width</code> 属性，因为不够弹性。</p>
+<p>当各子项占据总宽度大于剩余空间不足溢出 <code>flex</code> 容器时，各子项 <code>1:1</code> 收缩</p>
+<h3 id="12-order排列顺序">12. order排列顺序</h3>
+<p><code>order</code> 属性定义项目的排列顺序。数值越小，排列越靠前，默认为 <code>0</code> 。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css">
+<span class="p">.</span><span class="nc">item</span> <span class="p">{</span>
+  <span class="k">order</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">number</span><span class="o">&gt;</span><span class="p">;</span> <span class="c">/* 可以为 -1 */</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="13-align-self---单个子项垂直居中">13. align-self&mdash;单个子项垂直居中</h3>
+<p><code>align-self</code> 指控制单独某一个flex子项的垂直对齐方式</p>
+<p><code>align-self: auto | flex-start | flex-end | center | baseline | stretch;</code></p>
+<p>与<code>align-items</code> 的唯一区别就是 <code>align-self</code> 多了个 <code>auto</code>（默认值），表示继承自 <code>flex</code> 容器的<code>align-items</code> 属性值。其他属性值含义一模一样。</p>
+<h3 id="转载声明">转载声明</h3>
+<blockquote>
+<p>作者：阮一峰<br>
+链接：<a href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html">http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a><br>
+来源：阮一峰的网络日志<br>
+著作权归作者所有，任何形式的转载都请联系作者。</p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ZzmHub</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-05-21
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/flex/">Flex</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/%E4%BB%A3%E7%A0%81%E9%AA%9A%E6%93%8D%E4%BD%9C/">
+            <span class="next-text nav-default">Js实用技巧</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:gdmec.zhi@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhimianhub" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZzmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
