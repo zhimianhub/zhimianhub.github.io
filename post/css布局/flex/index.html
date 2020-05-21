@@ -49,7 +49,7 @@
 <meta itemprop="description" content="浏览器内置网格布局（Flex） Grid 布局是二维布局，Flex是一维布局 1. 基本概念 1 2 3 4 5 6 7 &lt;div class=&#34;container&#34;&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;1&lt;/p&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;2&lt;/p&gt;&lt;/div&gt; &lt;div class=&#34;item&#34;&gt;&lt;p&gt;3&lt;/p&gt;&lt;/div&gt; &lt;/div&gt; 最外层元素是整个大容器（cont">
 <meta itemprop="datePublished" content="2020-05-21T11:26:05&#43;08:00" />
 <meta itemprop="dateModified" content="2020-05-21T11:26:05&#43;08:00" />
-<meta itemprop="wordCount" content="2053">
+<meta itemprop="wordCount" content="2075">
 
 
 
@@ -304,7 +304,33 @@
 </ul>
 <h3 id="8-flex---放大收缩比例">8. flex&mdash;放大收缩比例</h3>
 <p><code>flex</code> 属性是 <code>flex-grow</code> ，<code>flex-shrink</code> 和 <code>flex-basis</code> 的缩写。</p>
-<p><code>flex: none | auto | [ &lt;'flex-grow'&gt; &lt;'flex-shrink'&gt; &lt;'flex-basis'&gt; ]</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css">
+<span class="nt">flex</span><span class="o">:</span> <span class="o">&lt;</span><span class="s1">&#39;flex-grow&#39;</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="s1">&#39;flex-shrink&#39;</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="s1">&#39;flex-basis&#39;</span><span class="o">&gt;</span>
+
+<span class="o">=======</span>
+
+<span class="p">.</span><span class="nc">item</span> <span class="p">{</span>
+  <span class="k">flex</span><span class="p">:</span> <span class="mi">0</span> <span class="mi">1</span> <span class="kc">auto</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+</code></pre></td></tr></table>
+</div>
+</div><p><code>flex: none | auto | [ &lt;'flex-grow'&gt; &lt;'flex-shrink'&gt; &lt;'flex-basis'&gt; ]</code></p>
 <p>其中第2和第3个参数（ <code>flex-shrink</code> 和 <code>flex-basis</code> ）是可选的。默认值为 <code>0 1 auto</code> 。</p>
 <ul>
 <li><code>flex</code> 默认值等同于 <code>flex: 0 1 auto</code>；</li>
@@ -316,28 +342,42 @@
 <p><code>flex-grow: &lt;number&gt;; /* 数值，可以是小数，默认值是 0，不支持负值 */</code></p>
 <p>规则如下：</p>
 <p><strong>所有剩余空间总量是1。</strong></p>
-<p><strong>如果只有一个 flex 元素设置了 flex-grow 属性值：</strong></p>
-<p><code>a.</code> 如果 <code>flex-grow </code>值小于1，则分配给它的是总剩余空间和这个比例的计算值。例如一个 0.5 的元素能分到一半的剩余空间。</p>
-<p><code>b.</code> 如果 <code>flex-grow</code> 值大于等于1，则独享所有剩余空间。</p>
-<p><strong>如果有多个 flex 元素设置了 <code>flex-grow</code> 属性值：</strong></p>
-<p><code>a.</code> 如果 <code>flex-grow</code> 值总和小于1，则分配给元素的是总剩余空间和当前元素设置的 <code>flex-grow</code> 比例的计算值。例如一个 0.1 和一个 0.2 的元素，只能分别分到 1/10 和 2/10 的剩余空间，剩下的剩余空间并不会分配给它们。</p>
-<p><code>b.</code> 如果 <code>flex-grow</code> 值总和大于等于1，则所有剩余空间被利用，分配比例就是 <code>flex-grow</code> 属性值的比例。</p>
+<blockquote>
+<p><strong>如果只有一个 flex 元素设置了 flex-grow 属性值：</strong><br>
+<code>a.</code> 如果 <code>flex-grow </code>值小于1，则分配给它的是总剩余空间和这个比例的计算值。例如一个 0.5 的元素能分到一半的剩余空间。<br>
+<code>b.</code> 如果 <code>flex-grow</code> 值大于等于1，则独享所有剩余空间。</p>
+</blockquote>
+<blockquote>
+<p><strong>如果有多个 flex 元素设置了 <code>flex-grow</code> 属性值：</strong><br>
+<code>a.</code> 如果 <code>flex-grow</code> 值总和小于1，则分配给元素的是总剩余空间和当前元素设置的 <code>flex-grow</code> 比例的计算值。例如一个 0.1 和一个 0.2 的元素，只能分别分到 1/10 和 2/10 的剩余空间，剩下的剩余空间并不会分配给它们。<br>
+<code>b.</code> 如果 <code>flex-grow</code> 值总和大于等于1，则所有剩余空间被利用，分配比例就是 <code>flex-grow</code> 属性值的比例。</p>
+</blockquote>
 <h3 id="10-flex-shrink---收缩比例">10. flex-shrink&mdash;收缩比例</h3>
 <p><code>flex-shrink</code> 不支持负值，默认值是1，也就是默认所有的flex子项都会收缩。如果设置为0，则表示不收缩，保持原始的 <code>fit-content</code> 宽度。</p>
 <p><code>flex-shrink: &lt;number&gt;; /* 数值，默认值是 1，不支持负值 */</code></p>
 <p>规则如下：已知flex子项不换行，且容器空间不足</p>
-<p><strong>如果只有一个 flex 元素设置了 flex-shrink：</strong></p>
-<p><code>a.</code> <code>flex-shrink</code> 值小于1，则收缩的尺寸不完全，会有一部分内容溢出 flex 容器。</p>
-<p><code>b.</code> <code>flex-shrink</code> 值大于等于1，则收缩完全，正好填满 flex 容器。</p>
-<p><strong>如果多个 flex 元素设置了 flex-shrink：</strong></p>
-<p><code>a.</code> <code>flex-shrink</code> 值的总和小于1，则收缩的尺寸不完全，每个元素收缩尺寸占“完全收缩的尺寸”的比例就是设置的 <code>flex-shrink</code> 的值。</p>
-<p><code>b.</code> <code>flex-shrink</code> 值的总和大于等于1，则收缩完全，每个元素收缩尺寸的比例和 <code>flex-shrink</code> 值的比例一样。</p>
+<blockquote>
+<p><strong>如果只有一个 flex 元素设置了 flex-shrink：</strong><br>
+<code>a.</code> <code>flex-shrink</code> 值小于1，则收缩的尺寸不完全，会有一部分内容溢出 flex 容器。<br>
+<code>b.</code> <code>flex-shrink</code> 值大于等于1，则收缩完全，正好填满 flex 容器。</p>
+</blockquote>
+<blockquote>
+<p><strong>如果多个 flex 元素设置了 flex-shrink：</strong><br>
+<code>a.</code> <code>flex-shrink</code> 值的总和小于1，则收缩的尺寸不完全，每个元素收缩尺寸占“完全收缩的尺寸”的比例就是设置的 <code>flex-shrink</code> 的值。<br>
+<code>b.</code> <code>flex-shrink</code> 值的总和大于等于1，则收缩完全，每个元素收缩尺寸的比例和 <code>flex-shrink</code> 值的比例一样。</p>
+</blockquote>
 <h3 id="11-flex-basis---定义元素默认宽度">11. flex-basis&mdash;定义元素默认宽度</h3>
 <p><code>flex-basis</code> 定义了在分配剩余空间之前元素的默认大小。</p>
 <p><code>flex-basis: &lt;length&gt; | auto; /* 默认值是 auto */</code></p>
+<blockquote>
 <p>默认值是 <code>auto</code>，就是自动。有设置 <code>width</code> 则占据空间就是 <code>width</code>，没有设置就按内容宽度来。</p>
+</blockquote>
+<blockquote>
 <p>如果同时设置 <code>width</code> 和 <code>flex-basis</code>，就渲染表现来看，会忽略 <code>width</code>。 <code>flex</code> 顾名思义就是弹性的意思，因此，实际上不建议对 <code>flex</code> 子项使用 <code>width</code> 属性，因为不够弹性。</p>
+</blockquote>
+<blockquote>
 <p>当各子项占据总宽度大于剩余空间不足溢出 <code>flex</code> 容器时，各子项 <code>1:1</code> 收缩</p>
+</blockquote>
 <h3 id="12-order排列顺序">12. order排列顺序</h3>
 <p><code>order</code> 属性定义项目的排列顺序。数值越小，排列越靠前，默认为 <code>0</code> 。</p>
 <div class="highlight"><div class="chroma">
@@ -359,7 +399,9 @@
 </div><h3 id="13-align-self---单个子项垂直居中">13. align-self&mdash;单个子项垂直居中</h3>
 <p><code>align-self</code> 指控制单独某一个flex子项的垂直对齐方式</p>
 <p><code>align-self: auto | flex-start | flex-end | center | baseline | stretch;</code></p>
+<blockquote>
 <p>与<code>align-items</code> 的唯一区别就是 <code>align-self</code> 多了个 <code>auto</code>（默认值），表示继承自 <code>flex</code> 容器的<code>align-items</code> 属性值。其他属性值含义一模一样。</p>
+</blockquote>
 <h3 id="转载声明">转载声明</h3>
 <blockquote>
 <p>作者：阮一峰<br>
