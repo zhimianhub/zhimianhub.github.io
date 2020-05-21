@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Js变量提升 on ZzmHub Blog</title>
+    <link>http://localhost:1313/tags/js%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</link>
+    <description>Recent content in Js变量提升 on ZzmHub Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 21 May 2020 16:32:59 +0800</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/js%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Js变量提升</title>
+      <link>http://localhost:1313/post/js%E5%9F%BA%E7%A1%80/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</link>
+      <pubDate>Thu, 21 May 2020 16:32:59 +0800</pubDate>
+      
+      <guid>http://localhost:1313/post/js%E5%9F%BA%E7%A1%80/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</guid>
+      <description>变量提升：在当前作用域下，会把带 var 和 function 进行提前声明或定义 注意： 函数提升要比变量提升的优先级要高，且不会被变量声明覆盖，但是会被变量赋值之后覆</description>
+    </item>
+    
+  </channel>
+</rss>

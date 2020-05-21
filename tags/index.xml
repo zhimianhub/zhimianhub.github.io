@@ -6,10 +6,19 @@
     <description>Recent content in Tags on ZzmHub Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 21 May 2020 11:26:05 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 21 May 2020 16:32:59 +0800</lastBuildDate>
     
 	<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Js变量提升</title>
+      <link>http://localhost:1313/tags/js%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</link>
+      <pubDate>Thu, 21 May 2020 16:32:59 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/js%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Flex</title>

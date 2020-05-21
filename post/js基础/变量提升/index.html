@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Js变量提升 - ZzmHub Blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="ZzmHub" /><meta name="description" content="变量提升：在当前作用域下，会把带 var 和 function 进行提前声明或定义 注意： 函数提升要比变量提升的优先级要高，且不会被变量声明覆盖，但是会被变量赋值之后覆" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.69.2 with theme even" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/js%E5%9F%BA%E7%A1%80/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.4eb71590ad024de2ebb1b5eef94cbb645b7e63e6b9c4c837355530a75e112ce1.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Js变量提升" />
+<meta property="og:description" content="变量提升：在当前作用域下，会把带 var 和 function 进行提前声明或定义 注意： 函数提升要比变量提升的优先级要高，且不会被变量声明覆盖，但是会被变量赋值之后覆" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/post/js%E5%9F%BA%E7%A1%80/%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/" />
+<meta property="article:published_time" content="2020-05-21T16:32:59+08:00" />
+<meta property="article:modified_time" content="2020-05-21T16:32:59+08:00" />
+<meta itemprop="name" content="Js变量提升">
+<meta itemprop="description" content="变量提升：在当前作用域下，会把带 var 和 function 进行提前声明或定义 注意： 函数提升要比变量提升的优先级要高，且不会被变量声明覆盖，但是会被变量赋值之后覆">
+<meta itemprop="datePublished" content="2020-05-21T16:32:59&#43;08:00" />
+<meta itemprop="dateModified" content="2020-05-21T16:32:59&#43;08:00" />
+<meta itemprop="wordCount" content="1084">
+
+
+
+<meta itemprop="keywords" content="Js变量提升," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Js变量提升"/>
+<meta name="twitter:description" content="变量提升：在当前作用域下，会把带 var 和 function 进行提前声明或定义 注意： 函数提升要比变量提升的优先级要高，且不会被变量声明覆盖，但是会被变量赋值之后覆"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">ZzmHub</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">首页</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">归档</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">分类</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">标签</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">关于</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">ZzmHub</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">首页</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">归档</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">分类</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">标签</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">关于</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Js变量提升</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-05-21 </span>
+        <div class="post-category">
+            <a href="/categories/js%E5%9F%BA%E7%A1%80/"> Js基础 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#变量提升块级作用域题目一">变量提升块级作用域题目一</a></li>
+        <li><a href="#变量提升块级作用域题目二">变量提升块级作用域题目二</a></li>
+        <li><a href="#变量提升块级作用域题目三">变量提升块级作用域题目三</a></li>
+        <li><a href="#变量提升块级作用域题目四">变量提升块级作用域题目四</a></li>
+        <li><a href="#变量提升块级作用域题目五">变量提升块级作用域题目五</a></li>
+        <li><a href="#转载声明">转载声明</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <blockquote>
+<p>变量提升：在当前作用域下，会把带 <code>var</code> 和 <code>function</code> 进行提前声明或定义<br>
+<strong>注意：</strong> 函数提升要比变量提升的优先级要高，且不会被变量声明覆盖，但是会被变量赋值之后覆盖<br>
+<strong>注意：</strong> 块级作用域只对 <code>let/const/function</code> 有效，对 <code>var</code> 无效<br>
+<strong>注意：</strong> 变量没有 <code>var</code> 声明为全局变量，有 <code>var</code> 声明则是 <code>function</code> 的私有变量</p>
+</blockquote>
+<h3 id="变量提升块级作用域题目一">变量提升块级作用域题目一</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">if</span><span class="p">(</span><span class="kc">true</span><span class="p">){</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+  <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+  <span class="kd">function</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+  <span class="nx">a</span> <span class="o">=</span> <span class="mi">21</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>打印结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kc">undefined</span>
+<span class="nx">ƒ</span> <span class="nx">a</span><span class="p">(){}</span>
+<span class="mi">1</span>
+<span class="mi">1</span>
+<span class="mi">21</span>
+<span class="mi">1</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>分析</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="c1">// 变量提升var a , function a
+</span><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>  <span class="c1">// undefined
+</span><span class="c1"></span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">if</span><span class="p">(</span><span class="kc">true</span><span class="p">){</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>  <span class="c1">// 块级作用域function a提升
+</span><span class="c1"></span>  <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>  <span class="c1">// 1
+</span><span class="c1"></span>  <span class="kd">function</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{}</span> <span class="c1">// 把a之前的变化，映射全局a = 1
+</span><span class="c1"></span>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>  <span class="c1">// 1
+</span><span class="c1"></span>  <span class="nx">a</span> <span class="o">=</span> <span class="mi">21</span>  <span class="c1">// 私有，未映射到全局
+</span><span class="c1"></span>  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>  <span class="c1">// 21
+</span><span class="c1"></span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>  <span class="c1">// 1
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="变量提升块级作用域题目二">变量提升块级作用域题目二</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="c1">//包含形参
+</span><span class="c1"></span>
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">)</span>
+
+<span class="kd">function</span> <span class="nx">test</span><span class="p">(</span><span class="nx">a</span><span class="p">){</span>
+  <span class="nx">a</span><span class="o">=</span> <span class="mi">1</span>
+  <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span><span class="mi">2</span>
+  <span class="nx">c</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">}</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>打印结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="nx">ƒ</span> <span class="nx">test</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span><span class="mi">2</span>
+  <span class="nx">c</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="p">}</span>
+
+<span class="mi">10</span>
+<span class="mi">11</span>
+<span class="mi">3</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>分析</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="c1">// 变量提升：var a ，function test() {}
+</span><span class="c1"></span><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">test</span><span class="p">)</span> <span class="c1">// 没有块级作用域，声明并定义
+</span><span class="c1"></span>
+<span class="kd">function</span> <span class="nx">test</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">a</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">// 传入的形参为私有变量，不会影响公有
+</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1">// var声明function的私有变量
+</span><span class="c1"></span>  <span class="nx">c</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1">// 没有var，全局
+</span><span class="c1"></span><span class="p">}</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">c</span><span class="p">)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="变量提升块级作用域题目三">变量提升块级作用域题目三</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="kd">function</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="kd">function</span> <span class="nx">b</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">n</span><span class="o">++</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">b</span><span class="p">()</span>
+  <span class="k">return</span> <span class="nx">b</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">a</span><span class="p">()</span>
+<span class="nx">c</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>打印结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="mi">11</span>
+<span class="mi">12</span>
+<span class="mi">0</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>分析</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="c1">// 变量提升
+</span><span class="c1">// var n ; var c ; function a() {}
+</span><span class="c1"></span>
+<span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="kd">function</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="c1">// 私有作用域， var n ,function b() {}
+</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="kd">function</span> <span class="nx">b</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">n</span><span class="o">++</span>   <span class="c1">// 操作自己上级的作用域，不操作全局
+</span><span class="c1"></span>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">b</span><span class="p">()</span>
+  <span class="k">return</span> <span class="nx">b</span>
+
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">a</span><span class="p">()</span>
+<span class="nx">c</span><span class="p">()</span> <span class="c1">// 相当于调用b函数
+</span><span class="c1"></span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span>  <span class="c1">// 全局变量不受影响，function a操作的是 `var n = 10` 这里的私有变量
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="变量提升块级作用域题目四">变量提升块级作用域题目四</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="kd">function</span> <span class="nx">bar</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">foo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">foo</span> <span class="o">=</span> <span class="mi">10</span>
+  <span class="p">}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span>
+
+<span class="p">}</span>
+
+<span class="nx">bar</span><span class="p">()</span>
+
+<span class="c1">// 打印结果
+</span><span class="c1">// 10
+</span><span class="c1"></span>
+</code></pre></td></tr></table>
+</div>
+</div><p>分析：私有作用域中的 <code>if</code> 块级作用域中 <code>var foo</code> 变量提升，此时的foo为 <code>undefined</code> ，<code>!foo为true</code>，符合条件 <code>foo = 10</code> ,结果打印 <code>10</code></p>
+<h3 id="变量提升块级作用域题目五">变量提升块级作用域题目五</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<span class="nx">a</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="kd">function</span> <span class="nx">fn</span><span class="p">()</span> <span class="p">{</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+  <span class="nx">a</span> <span class="o">=</span> <span class="mi">13</span>
+
+<span class="p">}</span>
+
+<span class="nx">fn</span><span class="p">()</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>结果报错：<code>a is not defined</code></p>
+<p>Tips:变量提升之新旧浏览器差异，旧版本无视块级作用域</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">if</span><span class="p">(</span><span class="kc">true</span><span class="p">){</span>
+
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+  <span class="kd">function</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>新版本打印</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kc">undefined</span>
+<span class="kd">function</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{}</span>
+<span class="kd">function</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{}</span>
+<span class="kd">function</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>IE10及以下打印结果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript">
+<span class="kd">function</span> <span class="nx">a</span><span class="p">()</span> <span class="p">{}</span>
+<span class="mi">0</span>
+<span class="mi">0</span>
+<span class="mi">0</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="转载声明">转载声明</h3>
+<blockquote>
+<p>作者：程序江<br>
+链接：<a href="https://mp.weixin.qq.com/s/I6mqv5IC9uhgpSB6jwIuxA">https://mp.weixin.qq.com/s/I6mqv5IC9uhgpSB6jwIuxA</a><br>
+来源：公众号：程序江<br>
+著作权归作者所有，任何形式的转载都请联系作者。</p>
+</blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">ZzmHub</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-05-21
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/js%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87/">Js变量提升</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/css%E5%B8%83%E5%B1%80/flex/">
+            <span class="next-text nav-default">Flex布局常见操作</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:gdmec.zhi@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/zhimianhub" class="iconfont icon-github" title="github"></a>
+  <a href="http://localhost:1313/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">ZzmHub</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
